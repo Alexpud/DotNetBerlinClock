@@ -13,19 +13,25 @@ namespace BerlinClock.Display
 
         public string Display(string minutes)
         {
-            if (!Int32.TryParse(minutes, out int parsedMinutes))
-            {
-                throw new InvalidTimeException($"Invalid clock minutes: {minutes}");
-            }
+            var parsedMinutes = TryParseMinutes(minutes);
 
             StringBuilder sb = new StringBuilder();
-            var blinkingLights = CalculateTheBlinkingLightsForTwoRowsOfLamps(parsedMinutes);
+            var blinkingLights = CalculateTheTurnedOnLightsForTwoRowsOfLamps(parsedMinutes);
             sb.AppendLine(FirstRow(blinkingLights.FirstRow));
             sb.Append(SecondRow(blinkingLights.SecondRow));
             return sb.ToString();
         }
 
-        private BlinkingLights CalculateTheBlinkingLightsForTwoRowsOfLamps(int minutes)
+        private int TryParseMinutes(string minutes)
+        {
+            if (!Int32.TryParse(minutes, out int parsedMinutes))
+            {
+                throw new InvalidTimeException($"Invalid clock minutes: {minutes}");
+            }
+            return parsedMinutes;
+        }
+
+        private BlinkingLights CalculateTheTurnedOnLightsForTwoRowsOfLamps(int minutes)
         {
             var nFives = 0;
             var nOnes = 0;
@@ -46,9 +52,17 @@ namespace BerlinClock.Display
             return new BlinkingLights(nFives, nOnes); ;
         }
 
-        private string FirstRow(int nBlinkingLights)
+        private string FirstRow(int nTurnedOnLights)
         {
-            int nTurnedOnLights = 0;
+            StringBuilder sb = new StringBuilder();
+            sb.Append(GetDisplayOfFirstRowTurnedOnLights(nTurnedOnLights));
+            sb.Append(Constants.TURNED_OFF_LIGHT, _FIRST_ROW_SIZE - nTurnedOnLights);
+            return sb.ToString();
+        }
+
+        private string GetDisplayOfFirstRowTurnedOnLights(int nBlinkingLights)
+        {
+            var nTurnedOnLights = 0;
             StringBuilder sb = new StringBuilder();
             while (nTurnedOnLights < nBlinkingLights)
             {
@@ -62,20 +76,14 @@ namespace BerlinClock.Display
                     sb.Append(Constants.YELLOW_BLINKING_LIGHT);
                 }
             }
-            sb.Append(Constants.TURNED_OFF_LIGHT, _FIRST_ROW_SIZE - nTurnedOnLights);
+
             return sb.ToString();
         }
 
-        private string SecondRow(int nBlinkingLights)
+        private string SecondRow(int nTurnedOnLights)
         {
-            int nTurnedOnLights = 0;
             StringBuilder sb = new StringBuilder();
-            while(nTurnedOnLights < nBlinkingLights)
-            {
-                nTurnedOnLights++;
-                sb.Append(Constants.YELLOW_BLINKING_LIGHT);
-            }
-
+            sb.Append(Constants.YELLOW_BLINKING_LIGHT, nTurnedOnLights);
             sb.Append(Constants.TURNED_OFF_LIGHT, _SECOND_ROW_SIZE - nTurnedOnLights);
             return sb.ToString();
         }

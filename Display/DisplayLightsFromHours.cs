@@ -8,37 +8,25 @@ namespace BerlinClock.Display
 {
     public class DisplayLightsFromHours : IClockHoursDisplay
     {
-        private readonly int _nLampsPerLine = 4;
+        private const int _LAMPS_PER_LINE = 4;
 
         public string Display(string hours)
         {
             int parsedHours = TryParseHours(hours);
 
-            StringBuilder sb = new StringBuilder();
-            var blinkingLights = CalculateTheBlinkingLightsForTwoRowsOfLamps(parsedHours);
+            var blinkingLights = CalculateTheTurnedOnLightsForTwoRowsOfLamps(parsedHours);
 
+            StringBuilder sb = new StringBuilder();
             sb.Append(ArrangeLampsPerRow(blinkingLights.FirstRow));
 
             sb.AppendLine();
 
             sb.Append(ArrangeLampsPerRow(blinkingLights.SecondRow));
 
-
             return sb.ToString();
         }
 
-        private string ArrangeLampsPerRow(int nTurnedOnLights)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Constants.RED_BLINKING_LIGHT, nTurnedOnLights);
-            if (_nLampsPerLine - nTurnedOnLights > 0)
-            {
-                sb.Append(Constants.TURNED_OFF_LIGHT, _nLampsPerLine - nTurnedOnLights);
-            }
-            return sb.ToString();
-        }
-
-        private static int TryParseHours(string hours)
+        private int TryParseHours(string hours)
         {
             if (!Int32.TryParse(hours, out int hourss))
             {
@@ -48,7 +36,19 @@ namespace BerlinClock.Display
             return hourss;
         }
 
-        private BlinkingLights CalculateTheBlinkingLightsForTwoRowsOfLamps(int hours)
+        private string ArrangeLampsPerRow(int nTurnedOnLights)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Constants.RED_BLINKING_LIGHT, nTurnedOnLights);
+            if (_LAMPS_PER_LINE - nTurnedOnLights > 0)
+            {
+                sb.Append(Constants.TURNED_OFF_LIGHT, _LAMPS_PER_LINE - nTurnedOnLights);
+            }
+            return sb.ToString();
+        }
+
+
+        private BlinkingLights CalculateTheTurnedOnLightsForTwoRowsOfLamps(int hours)
         {
             var nFives = 0;
             var nOnes = 0;
