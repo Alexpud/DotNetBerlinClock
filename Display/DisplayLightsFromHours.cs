@@ -15,7 +15,7 @@ namespace BerlinClock.Display
             int parsedHours = TryParseHours(hours);
 
             StringBuilder sb = new StringBuilder();
-            var blinkingLights = CalculateTheBlinkingLightsOnEachRow(parsedHours);
+            var blinkingLights = CalculateTheBlinkingLightsForTwoRowsOfLamps(parsedHours);
 
             sb.Append(ArrangeLampsPerRow(blinkingLights.FirstRow));
 
@@ -48,7 +48,7 @@ namespace BerlinClock.Display
             return hourss;
         }
 
-        private BlinkingLights CalculateTheBlinkingLightsOnEachRow(int hours)
+        private BlinkingLights CalculateTheBlinkingLightsForTwoRowsOfLamps(int hours)
         {
             var nFives = 0;
             var nOnes = 0;

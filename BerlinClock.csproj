@@ -67,9 +67,9 @@
     </Compile>
     <Compile Include="Classes\ITimeConverter.cs" />
     <Compile Include="Classes\TimeConverter.cs" />
-    <Compile Include="Unit Tests\ClockTime\DisplayLightsFromHoursTests.cs" />
-    <Compile Include="Unit Tests\ClockTime\DisplayLightsFromMinutesTests.cs" />
-    <Compile Include="Unit Tests\ClockTime\DisplayLightsFromSecondsTests.cs" />
+    <Compile Include="Unit Tests\Display\DisplayLightsFromHoursTests.cs" />
+    <Compile Include="Unit Tests\Display\DisplayLightsFromMinutesTests.cs" />
+    <Compile Include="Unit Tests\Display\DisplayLightsFromSecondsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

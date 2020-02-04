@@ -19,10 +19,31 @@ namespace BerlinClock.Display
             }
 
             StringBuilder sb = new StringBuilder();
-            var blinkingLights = CalculateTheBlinkingLightsOnEachRow(parsedMinutes);
+            var blinkingLights = CalculateTheBlinkingLightsForTwoRowsOfLamps(parsedMinutes);
             sb.AppendLine(FirstRow(blinkingLights.FirstRow));
             sb.Append(SecondRow(blinkingLights.SecondRow));
             return sb.ToString();
+        }
+
+        private BlinkingLights CalculateTheBlinkingLightsForTwoRowsOfLamps(int minutes)
+        {
+            var nFives = 0;
+            var nOnes = 0;
+            while (minutes > 0)
+            {
+                if (minutes >= 5)
+                {
+                    nFives++;
+                    minutes -= 5;
+                }
+                else
+                {
+                    nOnes++;
+                    minutes -= 1;
+                }
+            }
+
+            return new BlinkingLights(nFives, nOnes); ;
         }
 
         private string FirstRow(int nBlinkingLights)
@@ -43,27 +64,6 @@ namespace BerlinClock.Display
             }
             sb.Append(Constants.TURNED_OFF_LIGHT, _FIRST_ROW_SIZE - nTurnedOnLights);
             return sb.ToString();
-        }
-
-        private BlinkingLights CalculateTheBlinkingLightsOnEachRow(int minutes)
-        {
-            var nFives = 0;
-            var nOnes = 0;
-            while (minutes > 0)
-            {
-                if (minutes >= 5)
-                {
-                    nFives++;
-                    minutes -= 5;
-                }
-                else
-                {
-                    nOnes++;
-                    minutes -= 1;
-                }
-            }
-
-            return new BlinkingLights(nFives, nOnes); ;
         }
 
         private string SecondRow(int nBlinkingLights)
