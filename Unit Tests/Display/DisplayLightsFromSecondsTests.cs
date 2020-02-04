@@ -1,6 +1,6 @@
 ﻿using BerlinClock.Display;
 using BerlinClock.Exceptions;
-using BerlinClock.Interfaces.ClockTime;
+using BerlinClock.Interfaces.Display;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BerlinClock.UnitTests.Display

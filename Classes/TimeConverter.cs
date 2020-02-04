@@ -1,8 +1,5 @@
 ﻿using BerlinClock.Display;
-using BerlinClock.Interfaces.ClockTime;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using BerlinClock.Interfaces.Display;
 using System.Text;
 
 namespace BerlinClock

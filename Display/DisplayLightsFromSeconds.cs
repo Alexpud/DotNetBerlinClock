@@ -1,6 +1,6 @@
 ﻿using BerlinClock.Exceptions;
 using BerlinClock.Helpers;
-using BerlinClock.Interfaces.ClockTime;
+using BerlinClock.Interfaces.Display;
 using System;
 
 namespace BerlinClock.Display

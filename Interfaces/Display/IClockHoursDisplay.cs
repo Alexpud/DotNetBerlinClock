@@ -1,4 +1,4 @@
-﻿namespace BerlinClock.Interfaces.ClockTime
+﻿namespace BerlinClock.Interfaces.Display
 {
     public interface IClockHoursDisplay
     {
