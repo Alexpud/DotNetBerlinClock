@@ -1,4 +1,4 @@
-﻿using BerlinClock.Converters;
+﻿using BerlinClock.Display;
 using BerlinClock.Exceptions;
 using BerlinClock.Interfaces.ClockTime;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -6,12 +6,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BerlinClock.UnitTests.ClockTime
 {
     [TestClass]
-    public class BerlinClockSecondsLightsPrinterTests
+    public class DisplayLightsFromSecondsTests
     {
-        private IClockSecondsPrinter secondsConverter = new BerlinClockSecondsLightsPrinter();
+        private IClockSecondsDisplay secondsConverter = new DisplayLightsFromSeconds();
 
         [TestMethod]
-        public void Convert_Should_PrintBlinkingYellowLights_When_SecondsIsNotAOddNumber()
+        public void Print_Should_PrintBlinkingYellowLights_When_SecondsIsNotAOddNumber()
         {
             var lights = secondsConverter.Print("0");
 
@@ -20,13 +20,13 @@ namespace BerlinClock.UnitTests.ClockTime
 
         [TestMethod]
         [ExpectedException(typeof(InvalidTimeException))]
-        public void Convert_ShouldThrowException_When_Seconds_Is_Not_A_Number()
+        public void Print_ShouldThrowException_When_Seconds_Is_Not_A_Number()
         {
             secondsConverter.Print("a");
         }
 
         [TestMethod]
-        public void Convert_Should_PrintNoBlinkingYellowLights_When_SecondsIsAnOddNumber()
+        public void Print_Should_PrintNoBlinkingYellowLights_When_SecondsIsAnOddNumber()
         {
             var lights = secondsConverter.Print("1");
 

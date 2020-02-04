@@ -3,9 +3,9 @@ using BerlinClock.Helpers;
 using BerlinClock.Interfaces.ClockTime;
 using System;
 
-namespace BerlinClock.Converters
+namespace BerlinClock.Display
 {
-    public class BerlinClockSecondsLightsPrinter : IClockSecondsPrinter
+    public class DisplayLightsFromSeconds : IClockSecondsDisplay
     {
         public string Print(string seconds)
         {

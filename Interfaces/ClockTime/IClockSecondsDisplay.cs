@@ -1,6 +1,6 @@
 ﻿namespace BerlinClock.Interfaces.ClockTime
 {
-    public interface IClockSecondsPrinter
+    public interface IClockSecondsDisplay
     {
         string Print(string seconds);
     }

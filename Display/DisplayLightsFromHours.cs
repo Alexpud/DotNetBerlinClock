@@ -4,13 +4,13 @@ using BerlinClock.Interfaces.ClockTime;
 using System;
 using System.Text;
 
-namespace BerlinClock.Converters
+namespace BerlinClock.Display
 {
-    public class BerlinClockHoursLightsPrinter : IClockHoursPrinter
+    public class DisplayLightsFromHours : IClockHoursDisplay
     {
         private readonly int _nLampsPerLine = 4;
 
-        public string Print(string hours)
+        public string Display(string hours)
         {
             int hourss = TryParseHours(hours);
             hourss %= 24;

@@ -51,13 +51,13 @@
   <ItemGroup>
     <Compile Include="BDD\BerlinClockFeatureSteps.cs" />
     <Compile Include="Helpers\Constants.cs" />
-    <Compile Include="Printers\BerlinClockHoursLightsPrinter.cs" />
-    <Compile Include="Printers\BerlinClockMinutesLightsPrinter.cs" />
-    <Compile Include="Printers\BerlinClockSecondsLightsPrinter.cs" />
+    <Compile Include="Display\DisplayLightsFromHours.cs" />
+    <Compile Include="Display\DisplayLightFromMinutes.cs" />
+    <Compile Include="Display\DisplayLightsFromSeconds.cs" />
     <Compile Include="Exceptions\InvalidTimeException.cs" />
-    <Compile Include="Interfaces\ClockTime\IClockHoursPrinter.cs" />
-    <Compile Include="Interfaces\ClockTime\IClockMinutesPrinter.cs" />
-    <Compile Include="Interfaces\ClockTime\IClockSecondsPrinter.cs" />
+    <Compile Include="Interfaces\ClockTime\IClockHoursDisplay.cs" />
+    <Compile Include="Interfaces\ClockTime\IClockMinutesDisplay.cs" />
+    <Compile Include="Interfaces\ClockTime\IClockSecondsDisplay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BDD\BerlinClockFeatureSteps.feature.cs">
       <AutoGen>True</AutoGen>
@@ -66,9 +66,9 @@
     </Compile>
     <Compile Include="Classes\ITimeConverter.cs" />
     <Compile Include="Classes\TimeConverter.cs" />
-    <Compile Include="Unit Tests\ClockTime\BerlinClockHoursLightsPrinterTests.cs" />
-    <Compile Include="Unit Tests\ClockTime\BerlinClockMinutesLightsPrinterTests.cs" />
-    <Compile Include="Unit Tests\ClockTime\BerlinClockSecondsLightsPrinterTests.cs" />
+    <Compile Include="Unit Tests\ClockTime\DisplayLightsFromHoursTests.cs" />
+    <Compile Include="Unit Tests\ClockTime\DisplayLightsFromMinutesTests.cs" />
+    <Compile Include="Unit Tests\ClockTime\DisplayLightsFromSecondsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
