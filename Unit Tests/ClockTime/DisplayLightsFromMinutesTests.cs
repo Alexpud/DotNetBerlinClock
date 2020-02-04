@@ -25,10 +25,24 @@ namespace BerlinClock.Unit_Tests.ClockTime
         }
 
         [TestMethod]
-        public void Dispaly_ShouldTurnTheFirst2Lights_FromTheFirstRow_When_Its10Minutes()
+        public void Display_ShouldTurnTheFirst2Lights_FromTheFirstRow_When_Its10Minutes()
         {
             var lights = berlinClockMinutesLightsPrinter.Display("10");
             Assert.AreEqual("YY000000000\r\n" + "0000", lights);
+        }
+
+        [TestMethod]
+        public void Display_ShouldTurnAllLights_FromTheFirstRow_When_Its55Minutes()
+        {
+            var lights = berlinClockMinutesLightsPrinter.Display("55");
+            Assert.AreEqual("YYRYYRYYRYY\r\n" + "0000", lights);
+        }
+
+        [TestMethod]
+        public void Display_ShouldTurnOnlyTheFirstYellowLight_FromTheSecondRow_When_Its1Minute()
+        {
+            var lights = berlinClockMinutesLightsPrinter.Display("1");
+            Assert.AreEqual("00000000000\r\n" + "Y000", lights);
         }
     }
 }

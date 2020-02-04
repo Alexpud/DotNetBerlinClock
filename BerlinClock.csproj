@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDD\BerlinClockFeatureSteps.cs" />
+    <Compile Include="Helpers\BlinkingLights.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Display\DisplayLightsFromHours.cs" />
     <Compile Include="Display\DisplayLightFromMinutes.cs" />

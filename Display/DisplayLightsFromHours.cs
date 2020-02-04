@@ -69,17 +69,5 @@ namespace BerlinClock.Display
 
             return new BlinkingLights(nFives, nOnes); ;
         }
-
-        private class BlinkingLights
-        {
-            public int FirstRow { get; set; }
-            public int SecondRow { get; set; }
-
-            public BlinkingLights(int firstRow, int secondRow)
-            {
-                FirstRow = firstRow;
-                SecondRow = secondRow;
-            }
-        }
     }
 }
