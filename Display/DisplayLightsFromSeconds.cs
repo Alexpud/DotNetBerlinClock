@@ -7,7 +7,7 @@ namespace BerlinClock.Display
 {
     public class DisplayLightsFromSeconds : IClockSecondsDisplay
     {
-        public string Print(string seconds)
+        public string Display(string seconds)
         {
             if (!Int32.TryParse(seconds, out int parsedSeconds))
             {

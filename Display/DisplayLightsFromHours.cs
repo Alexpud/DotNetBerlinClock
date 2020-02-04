@@ -12,11 +12,10 @@ namespace BerlinClock.Display
 
         public string Display(string hours)
         {
-            int hourss = TryParseHours(hours);
-            hourss %= 24;
+            int parsedHours = TryParseHours(hours);
 
             StringBuilder sb = new StringBuilder();
-            var blinkingLights = CalculateTheBlinkingLightsOnEachRow(hourss);
+            var blinkingLights = CalculateTheBlinkingLightsOnEachRow(parsedHours);
 
             sb.Append(ArrangeLampsPerRow(blinkingLights.FirstRow));
 
@@ -28,14 +27,14 @@ namespace BerlinClock.Display
             return sb.ToString();
         }
 
-        private string ArrangeLampsPerRow(int nLamps)
+        private string ArrangeLampsPerRow(int nTurnedOnLights)
         {
             StringBuilder sb = new StringBuilder();
-            if (_nLampsPerLine - nLamps > 0)
+            sb.Append(Constants.RED_BLINKING_LIGHT, nTurnedOnLights);
+            if (_nLampsPerLine - nTurnedOnLights > 0)
             {
-                sb.Append(Constants.TURNED_OFF_LIGHT, _nLampsPerLine - nLamps);
+                sb.Append(Constants.TURNED_OFF_LIGHT, _nLampsPerLine - nTurnedOnLights);
             }
-            sb.Append(Constants.RED_BLINKING_LIGHT, nLamps);
             return sb.ToString();
         }
 
@@ -49,21 +48,21 @@ namespace BerlinClock.Display
             return hourss;
         }
 
-        private BlinkingLights CalculateTheBlinkingLightsOnEachRow(int hourss)
+        private BlinkingLights CalculateTheBlinkingLightsOnEachRow(int hours)
         {
             var nFives = 0;
             var nOnes = 0;
-            while (hourss > 0)
+            while (hours > 0)
             {
-                if (hourss >= 5)
+                if (hours >= 5)
                 {
                     nFives++;
-                    hourss -= 5;
+                    hours -= 5;
                 }
                 else
                 {
                     nOnes++;
-                    hourss -= 1;
+                    hours -= 1;
                 }
             }
 

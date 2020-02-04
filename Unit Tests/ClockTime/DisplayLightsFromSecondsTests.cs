@@ -13,7 +13,7 @@ namespace BerlinClock.UnitTests.ClockTime
         [TestMethod]
         public void Print_Should_PrintBlinkingYellowLights_When_SecondsIsNotAOddNumber()
         {
-            var lights = secondsConverter.Print("0");
+            var lights = secondsConverter.Display("0");
 
             Assert.AreEqual("Y", lights);
         }
@@ -22,15 +22,15 @@ namespace BerlinClock.UnitTests.ClockTime
         [ExpectedException(typeof(InvalidTimeException))]
         public void Print_ShouldThrowException_When_Seconds_Is_Not_A_Number()
         {
-            secondsConverter.Print("a");
+            secondsConverter.Display("a");
         }
 
         [TestMethod]
         public void Print_Should_PrintNoBlinkingYellowLights_When_SecondsIsAnOddNumber()
         {
-            var lights = secondsConverter.Print("1");
+            var lights = secondsConverter.Display("1");
 
-            Assert.AreEqual("0", lights);
+            Assert.AreEqual("O", lights);
         }
     }
 }

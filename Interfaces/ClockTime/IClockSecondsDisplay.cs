@@ -2,6 +2,6 @@
 {
     public interface IClockSecondsDisplay
     {
-        string Print(string seconds);
+        string Display(string seconds);
     }
 }

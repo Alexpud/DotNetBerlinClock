@@ -15,7 +15,7 @@ namespace BerlinClock.UnitTests.ClockTime
         {
             var hours = berlinClockHoursLampsPrinter.Display("0");
 
-            Assert.AreEqual("0000\r\n" + "0000", hours);
+            Assert.AreEqual("OOOO\r\n" + "OOOO", hours);
         }
         
         [TestMethod]
@@ -29,14 +29,14 @@ namespace BerlinClock.UnitTests.ClockTime
         public void Print_Should_ReturnFirstRow_Of_BlinkingRedLights_When_Its_20Hours()
         {
             var hours = berlinClockHoursLampsPrinter.Display("20");
-            Assert.AreEqual("RRRR\r\n" + "0000", hours);
+            Assert.AreEqual("RRRR\r\n" + "OOOO", hours);
         }
 
         [TestMethod]
         public void Print_Should_ReturnSecondRow_Of_BlinkingRedLights_When_Its_4Hours()
         {
             var hours = berlinClockHoursLampsPrinter.Display("4");
-            Assert.AreEqual("0000\r\n" + "RRRR", hours);
+            Assert.AreEqual("OOOO\r\n" + "RRRR", hours);
         }
 
         [TestMethod]
@@ -44,13 +44,6 @@ namespace BerlinClock.UnitTests.ClockTime
         {
             var hours = berlinClockHoursLampsPrinter.Display("24");
             Assert.AreEqual("RRRR\r\n" + "RRRR", hours);
-        }
-
-        [TestMethod]
-        public void Print_Should_ParseHoursGreater_Than_24_As_CyclesOf24()
-        {
-            var hours = berlinClockHoursLampsPrinter.Display("28");
-            Assert.AreEqual("0000\r\n" + "RRRR", hours);
         }
     }
 }
